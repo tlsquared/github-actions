@@ -12,11 +12,17 @@ runs:
   steps:
     - uses: actions/checkout@v5
     - uses: hashicorp/setup-terraform@v3
+    - name: Set environment variables
+      run: |
+        AWS_ACCESS_KEY_ID="${{ inputs.access-key }}"
+        echo "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}" >> $GITHUB_ENV
+        AWS_SECRET_ACCESS_KEY="${{ inputs.secret-key }}"
+        echo "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" >> $GITHUB_ENV
+        SCW_ACCESS_KEY="${{ inputs.access-key }}"
+        echo "SCW_ACCESS_KEY=${SCW_ACCESS_KEY}" >> $GITHUB_ENV
+        SCW_SECRET_KEY="${{ inputs.secret-key }}"
+        echo "SCW_SECRET_KEY=${SCW_SECRET_KEY}" >> $GITHUB_ENV
+      shell: bash
     - run: terraform init
       shell: sh
       working-directory: terraform
-      env:
-        AWS_ACCESS_KEY_ID: ${{ inputs.access-key }}
-        AWS_SECRET_ACCESS_KEY: ${{ inputs.secret-key }}
-        SCW_ACCESS_KEY: ${{ inputs.access-key }}
-        SCW_SECRET_KEY: ${{ inputs.secret-key }}
