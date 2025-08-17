@@ -1,6 +1,6 @@
 # GitHub Actions
 
-Shared GitHub Actions workflows
+A set of shared GitHub Actions workflows used across the company.
 
 - [build-push-image](build-push-image)
 - [lint-python](lint-python)
