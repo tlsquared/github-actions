@@ -1,0 +1,22 @@
+name: Terraform Init
+
+inputs:
+  access-key:
+    description: Access key used to authenticate
+    required: true
+  secret-key:
+    description: Secret key used to authenticate
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v5
+    - uses: hashicorp/setup-terraform@v3
+    - run: terraform init
+      shell: sh
+      working-directory: terraform
+      env:
+        AWS_ACCESS_KEY_ID: ${{ inputs.access-key }}
+        AWS_SECRET_ACCESS_KEY: ${{ inputs.secret-key }}
+        SCW_ACCESS_KEY: ${{ inputs.access-key }}
+        SCW_SECRET_KEY: ${{ inputs.secret-key }}
