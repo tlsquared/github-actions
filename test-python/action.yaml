@@ -1,4 +1,9 @@
-name: Lint Python
+name: Test Python
+
+inputs:
+  command:
+    description: Command to run the tests
+    default: pytest
 
 runs:
   using: composite
@@ -8,5 +13,5 @@ runs:
     - uses: actions/setup-python@v5
       with:
         python-version-file: .tool-versions
-    - run: uv run ruff check
+    - run: uv run ${{ inputs.command }}
       shell: sh
