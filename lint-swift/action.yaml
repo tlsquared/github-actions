@@ -1,0 +1,8 @@
+name: Lint Swift
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v5
+    - run: xcrun swift-format lint . --parallel --recursive --strict
+      shell: sh
