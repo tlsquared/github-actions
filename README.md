@@ -8,4 +8,5 @@ A set of shared GitHub Actions workflows used across the company.
 - [lint-terraform](lint-terraform)
 - [terraform-init](terraform-init)
 - [test-python](test-python)
+- [test-swift](test-swift)
 - [test-terraform](test-terraform)

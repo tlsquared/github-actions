@@ -1,0 +1,8 @@
+name: Test Swift
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v5
+    - run: xcrun swift test
+      shell: sh
